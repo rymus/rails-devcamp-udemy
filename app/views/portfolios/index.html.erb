@@ -4,5 +4,6 @@
   <p><%= item.title %></p>
   <p><%= item.subtitle %></p>
   <p><%= item.body %></p>
-  <%= image_tag item.thumb_image %>
+  <%= image_tag item.thumb_image unless item.thumb_image.nil? %>
+  <!--Deal with item if value entered in the form is nil-->
 <% end %>
