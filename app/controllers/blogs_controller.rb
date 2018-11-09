@@ -68,11 +68,13 @@ class BlogsController < ApplicationController
     elsif @blog.published?
       @blog.draft!
     end
-  
-      
+    
     redirect_to blogs_url, notice: 'Post status updated'
   end
   
+  def posts
+    @found = Blog.friendly.find(params[:something])
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
