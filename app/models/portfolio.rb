@@ -1,11 +1,13 @@
 class Portfolio < ApplicationRecord
   has_many :technologies
   
+  accepts_nested_attributes_for :technologies, reject_if: lambda { |attrs| attrs['name'].blank? }
+  
   include Placeholder
   
   validates_presence_of :title, :body, :main_image, :thumb_image
   
-  # Custom scope example 1
+  # Custom scope example 1 - Scope is a database query
   def self.angular
     where(subtitle: 'Angular')
   end
